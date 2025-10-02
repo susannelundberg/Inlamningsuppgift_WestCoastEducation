@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 namespace WCE.Domain;
 
 public class StudentRegisterd
@@ -23,4 +24,6 @@ public class StudentRegisterd
             Console.WriteLine(student);
         }
     }
+
+    
 }

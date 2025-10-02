@@ -6,7 +6,7 @@ public class Student
     public string? LastName { get; set; }
     public string? PersonalNumber { get; set; }
     public string? PhoneNumber { get; set; }
-    public Address Address { get; set; }
+    public Address Address { get; set; } 
 
     public Student(string firstName, string lastName, string personalNumber, string phoneNumber, Address address)
     {
@@ -19,6 +19,6 @@ public class Student
 
     public override string ToString()
     {
-        return $"{FirstName} {LastName}, Personnummer: {PersonalNumber}, Telefonnummer: {PhoneNumber}, Adress: {Address}";
+        return $"Student | {FirstName} {LastName}, Personnummer: {PersonalNumber}, Telefonnummer: {PhoneNumber}, Adress: {Address}";
     }
 }
