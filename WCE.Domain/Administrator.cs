@@ -4,18 +4,16 @@ public class Administrator : EducationLeader
 {
     
     public Administrator(
-                    string firstName,
-                    string lastName,
-                    string personalNumber,
-                    string phoneNumber,
-                    Address address,
-                    string knowledgeArea,
-                    IList<string> responsibleCourses,
-                    string dateOfEmployment
-                ) : base(firstName, lastName, personalNumber, phoneNumber, address, knowledgeArea, responsibleCourses, dateOfEmployment)
-    {
-        
-    }
+        string firstName,
+        string lastName,
+        string personalNumber,
+        string phoneNumber,
+        Address address,
+        string knowledgeArea,
+        IList<string> responsibleCourses,
+        string dateOfEmployment
+        ) : base(firstName, lastName, personalNumber, phoneNumber, address, knowledgeArea, responsibleCourses, dateOfEmployment)
+    {}
 
     public override string ToString()
     {

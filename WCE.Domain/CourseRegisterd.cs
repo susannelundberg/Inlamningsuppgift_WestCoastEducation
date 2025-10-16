@@ -11,15 +11,21 @@ public class CourseRegisterd
 
     public void GetAllCourses()
     {
+        Console.ForegroundColor = ConsoleColor.DarkBlue;
         if (_courses.Count == 0)
         {
+            Console.WriteLine("==========================================================");
             Console.WriteLine("Inga kurser är registrerade");
+            Console.WriteLine("==========================================================");
         }
-
-        Console.WriteLine("Följande studenter är registrerade:");
-        foreach (var course in _courses)
+        else
         {
-            Console.WriteLine(course);
+            Console.WriteLine("Följande kurser är registrerade:");
+            foreach (var course in _courses)
+            {
+                Console.WriteLine(course);
+            }
         }
+        Console.ResetColor();
     }
 }

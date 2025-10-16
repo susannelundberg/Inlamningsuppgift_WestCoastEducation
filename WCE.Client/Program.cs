@@ -4,17 +4,21 @@ namespace WCE.Client;
 
 class Program
 {
-    static CourseRegisterd courseRegisterd = new CourseRegisterd();
-    static StudentRegisterd studentRegisterd = new StudentRegisterd();
-    static void Main(string[] args)
+    static CourseRegisterd courseRegisterd = new();
+    static StudentRegisterd studentRegisterd = new();
+    static void Main()
     {
-
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("==========================================================");
+        Console.WriteLine("Välkommen till Westcoast Education");
+        Console.ResetColor();
 
         bool going = true;
         while (going)
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("==========================================================");
-            Console.WriteLine("Välkommen till Westcoast Education");
+            Console.WriteLine("MENY");
             Console.WriteLine("Var god gör ett val");
             Console.WriteLine("==========================================================");
             Console.WriteLine("För att registrera en ny kurs tryck 1");
@@ -26,6 +30,7 @@ class Program
             Console.WriteLine("För att visa all studenter tryck 7");
             Console.WriteLine("För att avsluta tryck 8");
             Console.WriteLine("Var god gör ditt val:");
+            Console.ResetColor();
 
             string? choice = Console.ReadLine();
 
@@ -62,6 +67,7 @@ class Program
 
                 default:
                     Console.WriteLine("Ogiltigt val. Försök igen.");
+                    Console.WriteLine("");
                     break;
             }
 
@@ -80,8 +86,11 @@ class Program
             else
             {
                 Console.WriteLine("Ogiltigt val. Försök igen.");
+                Console.WriteLine("");
             }
-            Console.Clear();
+            // Console.Clear();
+            Console.WriteLine("");
+            Console.WriteLine("");
 
         }
 
@@ -99,11 +108,19 @@ class Program
         string? courseStartDate = Console.ReadLine();
         Console.WriteLine("Ange slutdatum: ");
         string? courseEndDate = Console.ReadLine();
+        Console.WriteLine("Är det en distanskurd? J/N");
+        string? distance = Console.ReadLine();
 
-        Course course = new Course(courseNumber, courseTitle, courseLength, courseStartDate, courseEndDate);
+        Course course = new Course(courseNumber, courseTitle, courseLength, courseStartDate, courseEndDate, distance);
         courseRegisterd.AddCourse(course);
 
+        var courses = Storage.ReadCoursesJson($"{Environment.CurrentDirectory}/data/courseInfo.json");
+        courses.Add(course);
+        Storage.WriteCoursesJson($"{Environment.CurrentDirectory}/data/courseInfo.json", courses);
+
+        Console.ForegroundColor = ConsoleColor.DarkRed;
         Console.WriteLine($"Nu är {courseTitle} ({courseNumber}) registrerad som kurs!");
+        Console.ResetColor();
     }
 
     static void RegisterStudent()
@@ -124,12 +141,13 @@ class Program
         Console.WriteLine("Ange ort: ");
         string? city = Console.ReadLine();
 
-        
-        Address address = new(street, postalCode, city);
-        Student student = new(firstName, lastName, personalNumber, phoneNumber, address);
+        Address address = new(street!, postalCode!, city!);
+        Student student = new(firstName!, lastName!, personalNumber!, phoneNumber!, address);
         studentRegisterd.AddStudent(student);
 
+        Console.ForegroundColor = ConsoleColor.DarkRed;
         Console.WriteLine($"Nu är {firstName} {lastName} registrerad som student!");
+        Console.ResetColor();
     }
 
 }

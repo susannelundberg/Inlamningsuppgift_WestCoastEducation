@@ -6,15 +6,15 @@ public class EducationLeader : Teacher
 
 
     public EducationLeader(
-                string firstName,
-                string lastName,
-                string personalNumber,
-                string phoneNumber,
-                Address address,
-                string knowledgeArea,
-                IList<string> responsibleCourses,
-                string dateOfEmployment
-            ) : base(firstName, lastName, personalNumber, phoneNumber, address, knowledgeArea, responsibleCourses)
+        string firstName,
+        string lastName,
+        string personalNumber,
+        string phoneNumber,
+        Address address,
+        string knowledgeArea,
+        IList<string> responsibleCourses,
+        string dateOfEmployment
+        ) : base(firstName, lastName, personalNumber, phoneNumber, address, knowledgeArea, responsibleCourses)
     {
         DateOfEmployment = dateOfEmployment;
     }

@@ -8,7 +8,7 @@ public class Student
     public string? PhoneNumber { get; set; }
     public Address Address { get; set; } 
 
-    public Student(string firstName, string lastName, string personalNumber, string phoneNumber, Address address)
+    public Student(string firstName, string lastName, string personalNumber, string? phoneNumber, Address address)
     {
         FirstName = firstName;
         LastName = lastName;

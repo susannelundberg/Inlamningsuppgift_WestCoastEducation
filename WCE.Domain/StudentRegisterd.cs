@@ -13,16 +13,23 @@ public class StudentRegisterd
 
     public void GetAllStudents()
     {
+        Console.ForegroundColor = ConsoleColor.DarkBlue;
         if (_students.Count == 0)
         {
+            // Sätt färg
+            Console.WriteLine("==========================================================");
             Console.WriteLine("Inga studenter är registrerade");
+            Console.WriteLine("==========================================================");
         }
-
-        Console.WriteLine("Följande studenter är registrerade:");
-        foreach (var student in _students)
+        else
         {
-            Console.WriteLine(student);
+            Console.WriteLine("Följande studenter är registrerade:");
+            foreach (var student in _students)
+            {
+                Console.WriteLine(student);
+            }
         }
+        Console.ResetColor();
     }
 
     
