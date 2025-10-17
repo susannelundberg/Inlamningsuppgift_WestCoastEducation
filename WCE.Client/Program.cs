@@ -44,7 +44,9 @@ class Program
                     break;
 
                 case "2":
-                    RegisterStudent();
+                    StudentInputService inputService1 = new();
+                    Student newStudent = inputService1.ReadStudentFromConsole();
+                    studentRegisterd.AddStudent(newStudent);
                     break;
 
                 case "3":
@@ -97,66 +99,6 @@ class Program
 
         }
 
-    }
-
-    // static void RegisterCourse()
-    // {
-    //     Console.WriteLine("Ange kursnummer: ");
-    //     string? courseNumber = Console.ReadLine();
-    //     Console.WriteLine("Ange kursens namn: ");
-    //     string? courseTitle = Console.ReadLine();
-    //     Console.WriteLine("Ange antal studieveckor: ");
-    //     string? courseLength = Console.ReadLine();
-    //     Console.WriteLine("Ange startdatum (YYYY-MM-DD): ");
-    //     string? courseStartDate = Console.ReadLine();
-    //     Console.WriteLine("Ange slutdatum (YYYY-MM-DD): ");
-    //     string? courseEndDate = Console.ReadLine();
-    //     Console.WriteLine("Är det en distanskurd? J/N");
-    //     string? distance = Console.ReadLine();
-    //     while (distance != "J" && distance != "j" && distance != "N" && distance != "n")
-    //     {
-    //         Console.WriteLine("Fel svar angivet.");
-    //         Console.WriteLine("Är det en distanskurd? J/N");
-    //         distance = Console.ReadLine();
-    //     }
-
-    //     Course course = new Course(courseNumber, courseTitle, courseLength, courseStartDate, courseEndDate, distance);
-    //     courseRegisterd.AddCourse(course);
-
-    //     var courses = Storage.ReadCoursesJson($"{Environment.CurrentDirectory}/data/courseInfo.json");
-    //     courses.Add(course);
-    //     Storage.WriteCoursesJson($"{Environment.CurrentDirectory}/data/courseInfo.json", courses);
-
-    //     Console.ForegroundColor = ConsoleColor.DarkRed;
-    //     Console.WriteLine($"Nu är {courseTitle} ({courseNumber}) registrerad som kurs!");
-    //     Console.ResetColor();
-    // }
-
-    static void RegisterStudent()
-    {
-        Console.WriteLine("Ange förnamn: ");
-        string? firstName = Console.ReadLine();
-        Console.WriteLine("Ange efternamn: ");
-        string? lastName = Console.ReadLine();
-        Console.WriteLine("Ange personnummer: ");
-        string? personalNumber = Console.ReadLine();
-        Console.WriteLine("Ange telefonnummer: ");
-        string? phoneNumber = Console.ReadLine();
-
-        Console.WriteLine("Ange gatuadress: ");
-        string? street = Console.ReadLine();
-        Console.WriteLine("Ange postkod: ");
-        string? postalCode = Console.ReadLine();
-        Console.WriteLine("Ange ort: ");
-        string? city = Console.ReadLine();
-
-        Address address = new(street!, postalCode!, city!);
-        Student student = new(firstName!, lastName!, personalNumber!, phoneNumber!, address);
-        studentRegisterd.AddStudent(student);
-
-        Console.ForegroundColor = ConsoleColor.DarkRed;
-        Console.WriteLine($"Nu är {firstName} {lastName} registrerad som student!");
-        Console.ResetColor();
     }
 
 }

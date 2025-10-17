@@ -35,6 +35,6 @@ public class CourseInputService
         Console.WriteLine($"Nu är {courseTitle} ({courseNumber}) registrerad som kurs!");
         Console.ResetColor();
 
-        return course; // TA BORT?
+        return course;
     }
 }
