@@ -1,4 +1,5 @@
-﻿using WCE.Domain;
+﻿using System.Globalization;
+using WCE.Domain;
 
 namespace WCE.Client;
 
@@ -37,7 +38,9 @@ class Program
             switch (choice)
             {
                 case "1":
-                    RegisterCourse();
+                    CourseInputService inputService = new();
+                    Course newCourse = inputService.ReadCourseFromConsole();
+                    courseRegisterd.AddCourse(newCourse);
                     break;
 
                 case "2":
@@ -96,32 +99,38 @@ class Program
 
     }
 
-    static void RegisterCourse()
-    {
-        Console.WriteLine("Ange kursnummer: ");
-        string? courseNumber = Console.ReadLine();
-        Console.WriteLine("Ange kursens namn: ");
-        string? courseTitle = Console.ReadLine();
-        Console.WriteLine("Ange antal studieveckor: ");
-        string? courseLength = Console.ReadLine();
-        Console.WriteLine("Ange startdatum: ");
-        string? courseStartDate = Console.ReadLine();
-        Console.WriteLine("Ange slutdatum: ");
-        string? courseEndDate = Console.ReadLine();
-        Console.WriteLine("Är det en distanskurd? J/N");
-        string? distance = Console.ReadLine();
+    // static void RegisterCourse()
+    // {
+    //     Console.WriteLine("Ange kursnummer: ");
+    //     string? courseNumber = Console.ReadLine();
+    //     Console.WriteLine("Ange kursens namn: ");
+    //     string? courseTitle = Console.ReadLine();
+    //     Console.WriteLine("Ange antal studieveckor: ");
+    //     string? courseLength = Console.ReadLine();
+    //     Console.WriteLine("Ange startdatum (YYYY-MM-DD): ");
+    //     string? courseStartDate = Console.ReadLine();
+    //     Console.WriteLine("Ange slutdatum (YYYY-MM-DD): ");
+    //     string? courseEndDate = Console.ReadLine();
+    //     Console.WriteLine("Är det en distanskurd? J/N");
+    //     string? distance = Console.ReadLine();
+    //     while (distance != "J" && distance != "j" && distance != "N" && distance != "n")
+    //     {
+    //         Console.WriteLine("Fel svar angivet.");
+    //         Console.WriteLine("Är det en distanskurd? J/N");
+    //         distance = Console.ReadLine();
+    //     }
 
-        Course course = new Course(courseNumber, courseTitle, courseLength, courseStartDate, courseEndDate, distance);
-        courseRegisterd.AddCourse(course);
+    //     Course course = new Course(courseNumber, courseTitle, courseLength, courseStartDate, courseEndDate, distance);
+    //     courseRegisterd.AddCourse(course);
 
-        var courses = Storage.ReadCoursesJson($"{Environment.CurrentDirectory}/data/courseInfo.json");
-        courses.Add(course);
-        Storage.WriteCoursesJson($"{Environment.CurrentDirectory}/data/courseInfo.json", courses);
+    //     var courses = Storage.ReadCoursesJson($"{Environment.CurrentDirectory}/data/courseInfo.json");
+    //     courses.Add(course);
+    //     Storage.WriteCoursesJson($"{Environment.CurrentDirectory}/data/courseInfo.json", courses);
 
-        Console.ForegroundColor = ConsoleColor.DarkRed;
-        Console.WriteLine($"Nu är {courseTitle} ({courseNumber}) registrerad som kurs!");
-        Console.ResetColor();
-    }
+    //     Console.ForegroundColor = ConsoleColor.DarkRed;
+    //     Console.WriteLine($"Nu är {courseTitle} ({courseNumber}) registrerad som kurs!");
+    //     Console.ResetColor();
+    // }
 
     static void RegisterStudent()
     {
